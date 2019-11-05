@@ -40,13 +40,16 @@ cd gandouplot
 pipenv install
 ```
 
-To view notebooks:
+#### To view notebooks:
 ``` bash
 pipenv run jupyter lab
 ```
 Note that relative paths in the notebooks may not work.
 
-To build project:
+#### To build project:
+In growthplot.spec, change the `pathex` parameter to the absolute path of src/growthplot.py.
+
+Then run:
 ``` bash
 pipenv run pyinstaller growthplot.spec
 ```
