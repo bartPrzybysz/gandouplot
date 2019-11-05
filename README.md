@@ -35,7 +35,7 @@ Use Python 3.7+
 
 ``` bash
 pip install pipenv
-git clone
+git clone https://github.com/bartPrzybysz/gandouplot.git
 cd gandouplot
 pipenv install
 ```
