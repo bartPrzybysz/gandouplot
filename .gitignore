@@ -1,0 +1,6 @@
+.vscode
+build
+dist
+growthplot_config.json
+TEMP.pdf
+.ipynb_checkpoints
