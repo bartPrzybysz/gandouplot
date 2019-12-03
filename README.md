@@ -4,11 +4,13 @@ A command line utility for generating infant growth charts for the Gandou databa
 
 ## Setup
 
-Place the growthplot.exe and growthplot_config.json in the same directory.
+Place the growthplot_config.json in the growthplot directory.
 ```
-example-directory
+growthplot
+|   ...
 |   growthplot.exe
 |   growthplot_config.json
+|   ...
 ```
 
 The growthplot_config.json file should contain the following:
@@ -23,9 +25,9 @@ The growthplot_config.json file should contain the following:
 
 ## Usage
 
-Using the command line, navigate to the directory containing growthplot.exe. Then run growthplot.exe with the patient's id in the first positional parameter:
+Using the command line, navigate to the growthplot directory. Then run growthplot.exe with the patient's id in the first positional parameter:
 ```bash
-cd path/to/example-directory
+cd path/to/growthplot
 growthplot 1234
 ```
 Generating the plots will take a minute. The results will be stored in a file called TEMP.pdf (overwritten every time the application runs).
@@ -51,6 +53,6 @@ In growthplot.spec, change the `pathex` parameter to the absolute path of src/gr
 
 Then run:
 ``` bash
-pipenv run pyinstaller growthplot.spec
+pipenv run pyinstaller growthplot_onedir.spec
 ```
 
