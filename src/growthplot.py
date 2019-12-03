@@ -164,8 +164,8 @@ def main():
 
         if patient_data.Length.any():
             make_subplot(ax=axes[0],
-                        data_df=patient_data.query('Length > 0'),
-                        what='length-for-age')
+                         data_df=patient_data.query('Length > 0'),
+                         what='length-for-age')
 
         if patient_data.Weight.any():
             make_subplot(ax=axes[1],
