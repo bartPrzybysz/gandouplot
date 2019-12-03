@@ -56,7 +56,7 @@ def query_db(patient_id: int):
 
 
 def make_subplot(ax, data_df: pd.DataFrame, what: str):
-    gender = 'male' if data_df['Gender'][0] == 'M' else 'female'
+    gender = 'male' if data_df['Gender'].iloc[0] == 'M' else 'female'
     percentile_df = pd.DataFrame(PERCENTILE_DATA[what][gender])
 
     # Plot percentile lines
@@ -119,7 +119,7 @@ def make_subplot(ax, data_df: pd.DataFrame, what: str):
     )
 
     # Add labels
-    ax.set_title(f'{data_df.Name[0]} {what}', color='black', fontsize=18)
+    ax.set_title(f'{data_df.Name.iloc[0]} {what}', color='black', fontsize=18)
     ax.set_ylabel(y_label, color='black', fontsize=16)
     ax.set_xlabel(x_label, color='black', fontsize=16)
 
@@ -162,12 +162,15 @@ def main():
     with PdfPages('TEMP.pdf') as pdf:
         fig, axes = plt.subplots(2, 1, figsize=(8.5, 11))
 
-        make_subplot(ax=axes[0],
-                     data_df=patient_data.query('Length > 0'),
-                     what='length-for-age')
-        make_subplot(ax=axes[1],
-                     data_df=patient_data.query('Weight > 0'),
-                     what='weight-for-age')
+        if patient_data.Length.any():
+            make_subplot(ax=axes[0],
+                        data_df=patient_data.query('Length > 0'),
+                        what='length-for-age')
+
+        if patient_data.Weight.any():
+            make_subplot(ax=axes[1],
+                         data_df=patient_data.query('Weight > 0'),
+                         what='weight-for-age')
 
         fig.tight_layout()
         pdf.savefig(facecolor='white', papertype='letter',
@@ -176,12 +179,16 @@ def main():
 
         fig, axes = plt.subplots(2, 1, figsize=(8.5, 11))
 
-        make_subplot(ax=axes[0],
-                     data_df=patient_data.query('HeadCirc > 0'),
-                     what='head-circumference-for-age')
-        make_subplot(ax=axes[1],
-                     data_df=patient_data.query('Weight > 0 and Length > 0'),
-                     what='weight-for-length')
+        if patient_data.HeadCirc.any():
+            make_subplot(ax=axes[0],
+                         data_df=patient_data.query('HeadCirc > 0'),
+                         what='head-circumference-for-age')
+
+        if patient_data.Weight.any() and patient_data.Length.any():
+            make_subplot(ax=axes[1],
+                         data_df=patient_data.query(
+                             'Weight > 0 and Length > 0'),
+                         what='weight-for-length')
 
         fig.tight_layout()
         pdf.savefig(facecolor='white', papertype='letter',
