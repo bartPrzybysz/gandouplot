@@ -39,7 +39,7 @@ Use Python 3.7+
 pip install pipenv
 git clone https://github.com/bartPrzybysz/gandouplot.git
 cd gandouplot
-pipenv install
+pipenv install --dev
 ```
 
 #### To view notebooks:

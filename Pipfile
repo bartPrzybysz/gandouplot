@@ -8,6 +8,7 @@ pycodestyle = "*"
 jupyterlab = "*"
 autopep8 = "*"
 pyinstaller = "*"
+requests = "*"
 
 [packages]
 pandas = "*"
@@ -16,4 +17,4 @@ sqlalchemy = "*"
 mysql-connector = "*"
 
 [requires]
-python_version = "3.7"
+python_version = ">=3.7"
