@@ -41,6 +41,7 @@ def query_db(patient_id: int):
         FROM visit
         LEFT JOIN id ON visit.PatientID = id.IDnumber
         WHERE visit.PatientID={}
+        ORDER BY VisitDate
     '''.strip()
 
     # Perform SQL query
